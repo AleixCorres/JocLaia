@@ -14,7 +14,9 @@ function createBoard() {
     startElements.forEach((startElement)=> {
         const square = document.createElement('div');
         square.classList.add('square');
+        square.innerHTML = startElement;
         gameBoard.append(square);
+
     })
 }
 createBoard()
