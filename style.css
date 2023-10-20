@@ -1,0 +1,9 @@
+#gameBoard {
+    width: 280px;
+    height: 280px;
+    background-color: #000;
+}
+.square{
+    height: 40px;
+    width: 40px;
+}

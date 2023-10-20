@@ -1,0 +1,1 @@
+const generator = '<div class="piece" id="generator"><img src="img/generator.png"></div>';
