@@ -15,3 +15,17 @@
     width: 40px;
     
 }
+
+#elementsBoard {
+    width: 280px;
+    height: 280px;
+    background-color:  #ff2525;;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#solarPanel img{
+    height: 40px;
+    width: 40px;
+    
+}
