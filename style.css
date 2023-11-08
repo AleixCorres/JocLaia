@@ -1,0 +1,37 @@
+#gameBoard {
+    width: 490px;
+    height: 490px;
+    background-color:  #097B29;;
+    display: flex;
+    flex-wrap: wrap;
+}
+.square{
+    height: 70px;
+    width: 70px;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.25) inset;
+}
+#generator img{
+    height: 60px;
+    width: 60px;
+}
+
+#elementsBoard {
+    width: 100%;
+    height: 280px;
+
+}
+
+#elementsBoard img{
+    width: 90px;
+    height: 90px;
+
+}
+
+#elementsBoard #wire img {
+    width: 53px!important;
+    height: 10px!important;
+
+}
+div.piece {
+    width: fit-content;
+}
