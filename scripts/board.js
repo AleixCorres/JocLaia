@@ -1,5 +1,3 @@
-// Función para crear el tablero con los elementos iniciales
-
 export function createBoard(startElements) {
     const gameBoard = document.querySelector("#gameBoard");
   
@@ -28,8 +26,6 @@ export function createBoard(startElements) {
       square.addEventListener('drop', e => {
         console.log('Drop on square ' + i);
         
-        
-        // Añadir lógica para gestionar las caídas de elementos aquí
         let elementCopy;
         let dropElement = windTurbine
         if (dropElement === solarPanel) {
@@ -50,5 +46,4 @@ export function createBoard(startElements) {
     });
   }
   
-  // Función para inicializar el tablero
   export function initializeBoard() {}
