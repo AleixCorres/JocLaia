@@ -22,9 +22,8 @@
 }
 
 #elementsBoard img{
-    width: 90px;
-    height: 90px;
-
+    width: 70px;
+    height: 70px;
 }
 
 #elementsBoard #wire img {
@@ -34,4 +33,8 @@
 }
 div.piece {
     width: fit-content;
+}
+.square img{
+        width: 70px;
+        height: 70px;
 }

@@ -25,21 +25,33 @@ export function createBoard(startElements) {
         e.preventDefault();
         console.log('Drag over on square ' + i)
       });
+      
+      //comprovar donde puedo poner las fichas*
+      //
   
       square.addEventListener('drop', e => {
         console.log('Drop on square ' + i)
-        
+        checksquare()
+
         let elementCopy
-        console.log("Hola " + dragElement)
-        elementCopy = document.createElement('img');
-        if (dragElement === 'solarPanel') {
+        
+        // let lastPiece = 24
+        // if (firstpiece) {
+          
+        // }else
+        
+        if (dragElement === 'solarPanel' && checksquare()) {
+          elementCopy = document.createElement('img')
           elementCopy.src = 'img/solarpanel.png'
         } else if (dragElement === 'wire') {
+          elementCopy = document.createElement('img')
           elementCopy.src = 'img/wire.png'
         } else if (dragElement === 'windTurbine') {
+          elementCopy = document.createElement('img')
           elementCopy.src = 'img/windturbine.png'
         } else if (dragElement === 'connector') {
-          elementCopy.src = 'img/connector.png';
+          elementCopy = document.createElement('img')
+          elementCopy.src = 'img/connector.png'
         }
 
         if (elementCopy) {
@@ -49,6 +61,17 @@ export function createBoard(startElements) {
 
       })
     })
+  }
+
+  function checksquare() {
+    let checkedsquare =true
+
+    // if () {
+      
+    // }
+
+
+    return checkedsquare
   }
   
   export function initializeBoard() {}

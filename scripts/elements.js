@@ -2,6 +2,10 @@
 
 // Define los elementos del juego
 export const generator = '<img src="img/generator.png">'
+export const house1 = '<img src="img/house1.png">'
+export const house2 = '<img src="img/house2.png">'
+export const house3 = '<img src="img/house3.png">'
+export const house4 = '<img src="img/house4.png">'
 // const solarPanel = '<img src="img/solarPanel.png">'
 // const wire = '<img src="img/wire.png">'
 // const windTurbine = '<img src="img/windTurbine.png">'
