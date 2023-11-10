@@ -17,22 +17,7 @@ export function createBoard(startElements) {
         console.log('Drag enter on square ' + i)
       });
   
-      // Dragleave for each square
-      square.addEventListener('dragleave', e => {
-      });
-  
-      square.addEventListener('dragover', e => {
-        e.preventDefault();
-      });
-      
-  
       square.addEventListener('drop', e => {
-       
-
-       
-
-        
-        
         
         let elementCopy
         if (dragElement === 'solarPanel' && checksquare(i, arraySquareDragged)) {
@@ -53,38 +38,58 @@ export function createBoard(startElements) {
           square.appendChild(elementCopy)
           arraySquareDragged.push(i)
         }
-
       })
     })
   }
 
-  function checksquare(i, arraySquareDragged) {
+  function checksquare(i, arraySquareDragged, ) {
+    var checkedsquare = true
+    let lastDropSquare = arraySquareDragged[arraySquareDragged.length -1]
+
+    //
+    const leftEdge = [7,14,21,28,35]
+    const rightEdge = [13,20,27,34,41]
+    const topEdge = [1, 2, 3, 4, 5]
+    const bottomEdge = [43,44,45,46,47]
+
+    //
+    let top = lastDropSquare-7
+    let right = lastDropSquare+1
+    let bottom = lastDropSquare+7
+    let left = lastDropSquare-1
     
-    var lastDropSquare = arraySquareDragged[arraySquareDragged.length -1]
-    console.log(lastDropSquare)
-
-    var leftEdge = [0,7,14,21,28,35,42]
-    var rightEdge = [6,13,20,27,34,41,48]
-    var topEdge = [0, 1, 2, 3, 4, 5,6]
-    var bottomEdge = [42,43,44,45,46,47,48]
-
-    if (lastDropSquare === leftEdge) {
-      option arguments,  
-      if (i ===) {
-          
-        }
-    // } if (i === ) {
-      
-    // }if (i === ) {
-      
-    // }if (i === ) {
-      
-    // }else {
+    if (leftEdge.includes(lastDropSquare)) { 
+      let possibleOptions = [top, right, bottom]  
+      if (possibleOptions.includes(i)) {
+        
+      }else{
+        checkedsquare = false
+      }
+      } else if (rightEdge.includes(lastDropSquare)) {
+      let possibleOptions = [top, left, bottom]
+      if (possibleOptions.includes(i)) {
+        
+      }else{
+        checkedsquare = false
+      }
+    } else if (topEdge.includes(lastDropSquare)) {
+      let possibleOptions = [bottom, right, left]
+      if (possibleOptions.includes(i)) {
+        
+      }else{
+        checkedsquare = false
+      }
+    } else if (bottomEdge.includes(lastDropSquare)) {
+      let possibleOptions = [top, right, left]
+      if (possibleOptions.includes(i)) {
+        
+      }else{
+        checkedsquare = false
+      }
+    }else {
       
     }
 
-
-    var checkedsquare = true
     return checkedsquare
   }
   

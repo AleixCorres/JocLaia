@@ -38,3 +38,7 @@ div.piece {
         width: 70px;
         height: 70px;
 }
+
+body{
+    background-image: url(./img/indianGirl.png);
+}

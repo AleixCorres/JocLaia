@@ -23,10 +23,6 @@ export function initializeElements() {
       dragElement = piece.id
       console.log('Adios ' + dragElement)
     });
-
-    piece.addEventListener('dragend', (e) => {
-      // Aquí puedes agregar el código necesario después de soltar el elemento
-    });
   });
 }
 
