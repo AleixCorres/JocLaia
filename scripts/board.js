@@ -1,4 +1,5 @@
 import { dragElement } from './elements.js';
+import { arraySquareDragged } from './main.js';
 
 export function createBoard(startElements) {
     
@@ -18,29 +19,23 @@ export function createBoard(startElements) {
   
       // Dragleave for each square
       square.addEventListener('dragleave', e => {
-        console.log('Drag leave on square ' + i)
       });
   
       square.addEventListener('dragover', e => {
         e.preventDefault();
-        console.log('Drag over on square ' + i)
       });
       
-      //comprovar donde puedo poner las fichas*
-      //
   
       square.addEventListener('drop', e => {
-        console.log('Drop on square ' + i)
-        checksquare()
+       
 
+       
+
+        
+        
+        
         let elementCopy
-        
-        // let lastPiece = 24
-        // if (firstpiece) {
-          
-        // }else
-        
-        if (dragElement === 'solarPanel' && checksquare()) {
+        if (dragElement === 'solarPanel' && checksquare(i, arraySquareDragged)) {
           elementCopy = document.createElement('img')
           elementCopy.src = 'img/solarpanel.png'
         } else if (dragElement === 'wire') {
@@ -56,21 +51,40 @@ export function createBoard(startElements) {
 
         if (elementCopy) {
           square.appendChild(elementCopy)
-          
+          arraySquareDragged.push(i)
         }
 
       })
     })
   }
 
-  function checksquare() {
-    let checkedsquare =true
+  function checksquare(i, arraySquareDragged) {
+    
+    var lastDropSquare = arraySquareDragged[arraySquareDragged.length -1]
+    console.log(lastDropSquare)
 
-    // if () {
+    var leftEdge = [0,7,14,21,28,35,42]
+    var rightEdge = [6,13,20,27,34,41,48]
+    var topEdge = [0, 1, 2, 3, 4, 5,6]
+    var bottomEdge = [42,43,44,45,46,47,48]
+
+    if (lastDropSquare === leftEdge) {
+      option arguments,  
+      if (i ===) {
+          
+        }
+    // } if (i === ) {
       
-    // }
+    // }if (i === ) {
+      
+    // }if (i === ) {
+      
+    // }else {
+      
+    }
 
 
+    var checkedsquare = true
     return checkedsquare
   }
   
