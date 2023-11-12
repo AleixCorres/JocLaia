@@ -16,20 +16,25 @@ export function createBoard(startElements) {
       square.addEventListener('dragenter', e => {
         console.log('Drag enter on square ' + i)
       });
+      square.addEventListener('dragover', e => {
+        e.preventDefault();
+      });
   
       square.addEventListener('drop', e => {
+        console.log('Drop on square ' + i);
+        
         
         let elementCopy
         if (dragElement === 'solarPanel' && checksquare(i, arraySquareDragged)) {
           elementCopy = document.createElement('img')
           elementCopy.src = 'img/solarpanel.png'
-        } else if (dragElement === 'wire') {
+        } else if (dragElement === 'wire' && checksquare(i, arraySquareDragged)) {
           elementCopy = document.createElement('img')
           elementCopy.src = 'img/wire.png'
-        } else if (dragElement === 'windTurbine') {
+        } else if (dragElement === 'windTurbine' && checksquare(i, arraySquareDragged)) {
           elementCopy = document.createElement('img')
           elementCopy.src = 'img/windturbine.png'
-        } else if (dragElement === 'connector') {
+        } else if (dragElement === 'connector'  && checksquare(i, arraySquareDragged)) {
           elementCopy = document.createElement('img')
           elementCopy.src = 'img/connector.png'
         }
@@ -42,8 +47,8 @@ export function createBoard(startElements) {
     })
   }
 
-  function checksquare(i, arraySquareDragged, ) {
-    var checkedsquare = true
+  function checksquare(i, arraySquareDragged) {
+    let checkedsquare = true
     let lastDropSquare = arraySquareDragged[arraySquareDragged.length -1]
 
     //
@@ -52,7 +57,7 @@ export function createBoard(startElements) {
     const topEdge = [1, 2, 3, 4, 5]
     const bottomEdge = [43,44,45,46,47]
 
-    //
+  
     let top = lastDropSquare-7
     let right = lastDropSquare+1
     let bottom = lastDropSquare+7
@@ -60,6 +65,7 @@ export function createBoard(startElements) {
     
     if (leftEdge.includes(lastDropSquare)) { 
       let possibleOptions = [top, right, bottom]  
+      console.log(possibleOptions) 
       if (possibleOptions.includes(i)) {
         
       }else{
@@ -87,10 +93,18 @@ export function createBoard(startElements) {
         checkedsquare = false
       }
     }else {
-      
+      let possibleOptions = [top, right,bottom, left]
+      if (possibleOptions.includes(i)) {
+        
+      }else{
+        checkedsquare = false
+      }
     }
+    if (arraySquareDragged.includes(i)) {
+      checkedsquare = false
+    }
+
+
 
     return checkedsquare
   }
-  
-  export function initializeBoard() {}
