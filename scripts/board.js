@@ -39,12 +39,72 @@ export function createBoard(startElements) {
           elementCopy.src = 'img/connector.png'
         }
 
+        checkPenultimate(i, arraySquareDragged)
+
         if (elementCopy) {
           square.appendChild(elementCopy)
           arraySquareDragged.push(i)
         }
+
+        
+
       })
     })
+  }
+
+  function checkPenultimate(i, arraySquareDragged) {
+    
+    let antepenultimate = arraySquareDragged[arraySquareDragged.length -2]
+    let penultimate = arraySquareDragged[arraySquareDragged.length -1]
+    let ultimate = i
+    //
+    let goesToLeft = false
+    let goesToRight = false
+    let goesToTop = false
+    let goesToBottom = false
+
+    //
+    let comesFromLeft = false
+    let comesFromRight = false
+    let comesFromTop = false
+    let comesFromBottom = false
+
+  if (ultimate + 1 === penultimate) {
+      goesToLeft = true
+    } else if(ultimate - 1 === penultimate){
+      goesToRight = true
+    } else if(ultimate + 7 === penultimate){
+      goesToTop = true
+    } else if(ultimate - 7 === penultimate){
+      goesToBottom = true
+    }
+
+    if (penultimate + 1 === antepenultimate) {
+      comesFromLeft = true
+    } else if(penultimate - 1 === antepenultimate){
+      comesFromRight = true
+    } else if(penultimate + 7 === antepenultimate){
+      comesFromTop = true
+    } else if(penultimate - 7 === antepenultimate){
+      comesFromBottom = true
+    }
+
+    if (goesToTop && comesFromRight || goesToRight && comesFromTop) {
+      //quiero que esta funcion cambie la imagen que se ha puesto antes
+      console.log("hola " + penultimate)
+    } else if (goesToTop && comesFromBottom || goesToBottom && comesFromTop) {
+      
+    } else if (goesToTop && comesFromLeft || goesToBottom && comesFromTop ) {
+      
+    } else if (goesToBottom && comesFromLeft|| goesToLeft && comesFromBottom){
+
+    }else if (goesToBottom && comesFromRight || goesToRight && comesFromBottom ) {
+      
+    }else if (goesToRight && comesFromLeft || goesToLeft && comesFromRight) {
+      
+    }
+
+
   }
 
   function checksquare(i, arraySquareDragged) {

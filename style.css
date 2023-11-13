@@ -1,13 +1,13 @@
 #gameBoard {
-    width: 490px;
-    height: 490px;
+    width: 630px;
+    height: 630px;
     background-color:  #097B29;;
     display: flex;
     flex-wrap: wrap;
 }
 .square{
-    height: 70px;
-    width: 70px;
+    height: 90px;
+    width: 90px;
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.25) inset;
 }
 #generator img{
@@ -22,8 +22,8 @@
 }
 
 #elementsBoard img{
-    width: 70px;
-    height: 70px;
+    width: 90px;
+    height: 90px;
 }
 
 #elementsBoard #wire img {
@@ -35,8 +35,8 @@ div.piece {
     width: fit-content;
 }
 .square img{
-        width: 70px;
-        height: 70px;
+        width: 90px;
+        height: 90px;
 }
 
 /* body{
