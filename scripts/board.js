@@ -21,7 +21,7 @@ export function createBoard(startElements) {
       });
   
       square.addEventListener('drop', e => {
-        console.log('Drop on square ' + i);
+        console.log('Drop on square ' + i)
         
         
         let elementCopy
@@ -39,7 +39,10 @@ export function createBoard(startElements) {
           elementCopy.src = 'img/connector.png'
         }
 
-        checkPenultimate(i, arraySquareDragged)
+        if (!arraySquareDragged.includes(i)) {
+          checkPenultimate(i, arraySquareDragged)
+        }
+        
 
         if (elementCopy) {
           square.appendChild(elementCopy)
@@ -91,21 +94,53 @@ export function createBoard(startElements) {
 
     if (goesToTop && comesFromRight || goesToRight && comesFromTop) {
       //quiero que esta funcion cambie la imagen que se ha puesto antes
-      console.log("hola " + penultimate)
+      var penultimateSquare = document.querySelector('[squareid="' + penultimate + '"]');
+      console.log(penultimateSquare)
+      penultimateSquare.removeChild(penultimateSquare.firstChild)
+      
+
     } else if (goesToTop && comesFromBottom || goesToBottom && comesFromTop) {
+      var penultimateSquare = document.querySelector('[squareid="' + penultimate + '"]');
+      console.log(penultimateSquare)
+      penultimateSquare.removeChild(penultimateSquare.firstChild)
       
     } else if (goesToTop && comesFromLeft || goesToBottom && comesFromTop ) {
+      var penultimateSquare = document.querySelector('[squareid="' + penultimate + '"]');
+      console.log(penultimateSquare)
+      penultimateSquare.removeChild(penultimateSquare.firstChild)
       
     } else if (goesToBottom && comesFromLeft|| goesToLeft && comesFromBottom){
+      var penultimateSquare = document.querySelector('[squareid="' + penultimate + '"]');
+      console.log(penultimateSquare)
+      penultimateSquare.removeChild(penultimateSquare.firstChild)
 
-    }else if (goesToBottom && comesFromRight || goesToRight && comesFromBottom ) {
+    } else if (goesToBottom && comesFromRight || goesToRight && comesFromBottom ) {
+      var penultimateSquare = document.querySelector('[squareid="' + penultimate + '"]');
+      console.log(penultimateSquare)
+      penultimateSquare.removeChild(penultimateSquare.firstChild)
       
-    }else if (goesToRight && comesFromLeft || goesToLeft && comesFromRight) {
+    } else if (goesToRight && comesFromLeft || goesToLeft && comesFromRight) {
+      var penultimateSquare = document.querySelector('[squareid="' + penultimate + '"]');
+      console.log(penultimateSquare)
+      penultimateSquare.removeChild(penultimateSquare.firstChild)
       
-    }
+    } else if (goesToBottom && comesFromBottom || goesToTop && comesFromTop) {
+      var penultimateSquare = document.querySelector('[squareid="' + penultimate + '"]');
+      console.log(penultimateSquare)
+      penultimateSquare.removeChild(penultimateSquare.firstChild)
 
-
-  }
+  } else if (goesToRight && comesFromRight || goesToLeft && comesFromLeft) {
+    var penultimateSquare = document.querySelector('[squareid="' + penultimate + '"]');
+    console.log(penultimateSquare)
+    penultimateSquare.removeChild(penultimateSquare.firstChild)
+  
+  } else if (comesFromTop && goesToLeft) {
+    var penultimateSquare = document.querySelector('[squareid="' + penultimate + '"]');
+    console.log(penultimateSquare)
+    penultimateSquare.removeChild(penultimateSquare.firstChild)
+  
+  }  
+}
 
   function checksquare(i, arraySquareDragged) {
     let checkedsquare = true
