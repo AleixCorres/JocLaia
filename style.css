@@ -34,9 +34,25 @@
 div.piece {
     width: fit-content;
 }
-.square img{
+.square[squareid="42"] img{
         width: 90px;
         height: 90px;
+}
+.square[squareid="0"] img{
+    width: 90px;
+    height: 90px;
+}
+.square[squareid="6"] img{
+    width: 90px;
+    height: 90px;
+}
+.square[squareid="48"] img{
+    width: 90px;
+    height: 90px;
+}
+
+.square{
+    text-align: left!important;
 }
 
 /* body{

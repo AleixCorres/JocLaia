@@ -1,7 +1,7 @@
 import { dragElement } from './elements.js';
 import { arraySquareDragged } from './main.js';
 
-export function createBoard(startElements) {
+export function createBoard(startElements, piecesDropped) {
     
     const gameBoard = document.querySelector("#gameBoard")
    
@@ -27,26 +27,34 @@ export function createBoard(startElements) {
         let elementCopy
         if (dragElement === 'solarPanel' && checksquare(i, arraySquareDragged)) {
           elementCopy = document.createElement('img')
-          elementCopy.src = 'img/solarpanel.png'
+          elementCopy.src = 'img/solarPanel/solarpanel.png'
+
         } else if (dragElement === 'wire' && checksquare(i, arraySquareDragged)) {
           elementCopy = document.createElement('img')
-          elementCopy.src = 'img/wire.png'
+          elementCopy.src = 'img/wire/wire.png'
+
+
         } else if (dragElement === 'windTurbine' && checksquare(i, arraySquareDragged)) {
           elementCopy = document.createElement('img')
-          elementCopy.src = 'img/windturbine.png'
+          elementCopy.src = 'img/windTurbine/windturbine.png'
+
+
         } else if (dragElement === 'connector'  && checksquare(i, arraySquareDragged)) {
           elementCopy = document.createElement('img')
-          elementCopy.src = 'img/connector.png'
+          elementCopy.src = 'img/connector/connector.png'
+
+
         }
 
         if (!arraySquareDragged.includes(i)) {
-          checkPenultimate(i, arraySquareDragged)
+          checkPenultimate(i, arraySquareDragged, piecesDropped)
         }
         
 
         if (elementCopy) {
           square.appendChild(elementCopy)
           arraySquareDragged.push(i)
+          piecesDropped.push(dragElement)
         }
 
         
@@ -55,8 +63,10 @@ export function createBoard(startElements) {
     })
   }
 
-  function checkPenultimate(i, arraySquareDragged) {
+  function checkPenultimate(i, arraySquareDragged, piecesDropped) {
     
+    let lastDroppedPiece = piecesDropped[piecesDropped.length -1]
+
     let antepenultimate = arraySquareDragged[arraySquareDragged.length -2]
     let penultimate = arraySquareDragged[arraySquareDragged.length -1]
     let ultimate = i
@@ -83,63 +93,216 @@ export function createBoard(startElements) {
     }
 
     if (penultimate + 1 === antepenultimate) {
-      comesFromLeft = true
-    } else if(penultimate - 1 === antepenultimate){
       comesFromRight = true
+    } else if(penultimate - 1 === antepenultimate){
+      comesFromLeft = true
     } else if(penultimate + 7 === antepenultimate){
-      comesFromTop = true
-    } else if(penultimate - 7 === antepenultimate){
       comesFromBottom = true
+    } else if(penultimate - 7 === antepenultimate){
+      comesFromTop = true
     }
 
-    if (goesToTop && comesFromRight || goesToRight && comesFromTop) {
-      //quiero que esta funcion cambie la imagen que se ha puesto antes
-      var penultimateSquare = document.querySelector('[squareid="' + penultimate + '"]');
-      console.log(penultimateSquare)
-      penultimateSquare.removeChild(penultimateSquare.firstChild)
-      
 
-    } else if (goesToTop && comesFromBottom || goesToBottom && comesFromTop) {
+    let newImage
+    if (goesToTop && comesFromLeft || goesToLeft && comesFromTop) {
       var penultimateSquare = document.querySelector('[squareid="' + penultimate + '"]');
-      console.log(penultimateSquare)
       penultimateSquare.removeChild(penultimateSquare.firstChild)
+
       
-    } else if (goesToTop && comesFromLeft || goesToBottom && comesFromTop ) {
+        if (lastDroppedPiece === 'solarPanel') {
+          newImage = document.createElement('img')
+          newImage.src = 'img/solarPanel/leftTop.png'
+          penultimateSquare.appendChild(newImage)
+
+        } else if (lastDroppedPiece === 'wire') {
+          newImage = document.createElement('img')
+          newImage.src = 'img/wire/leftTop.png'
+          penultimateSquare.appendChild(newImage)
+
+        } else if (lastDroppedPiece === 'windTurbine') {
+          newImage = document.createElement('img')
+          newImage.src = 'img/windTurbine/leftTop.png'
+          penultimateSquare.appendChild(newImage)
+
+        } else if (lastDroppedPiece === 'connector') {
+          newImage = document.createElement('img')
+          newImage.src = 'img/connector/leftTop.png'
+          penultimateSquare.appendChild(newImage)
+
+        }
+
+
+
+
+    } else if (goesToTop && comesFromBottom || goesToBottom && comesFromTop || goesToBottom && comesFromBottom || goesToTop && comesFromTop) {
       var penultimateSquare = document.querySelector('[squareid="' + penultimate + '"]');
       console.log(penultimateSquare)
       penultimateSquare.removeChild(penultimateSquare.firstChild)
+
+      if (lastDroppedPiece === 'solarPanel') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/solarPanel/vertical.png'
+        penultimateSquare.appendChild(newImage)
+
+      } else if (lastDroppedPiece === 'wire') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/wire/vertical.png'
+        penultimateSquare.appendChild(newImage)
+
+      } else if (lastDroppedPiece === 'windTurbine') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/windTurbine/vertical.png'
+        penultimateSquare.appendChild(newImage)
+
+      } else if (lastDroppedPiece === 'connector') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/connector/vertical.png'
+        penultimateSquare.appendChild(newImage)
+
+      }
+
+
+      
+    } else if (goesToTop && comesFromLeft || comesFromTop && goesToLeft ) {
+      var penultimateSquare = document.querySelector('[squareid="' + penultimate + '"]');
+      console.log(penultimateSquare)
+      penultimateSquare.removeChild(penultimateSquare.firstChild)
+
+      if (lastDroppedPiece === 'solarPanel') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/solarPanel/leftTop.png'
+        penultimateSquare.appendChild(newImage)
+
+      } else if (lastDroppedPiece === 'wire') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/wire/leftTop.png'
+        penultimateSquare.appendChild(newImage)
+
+      } else if (lastDroppedPiece === 'windTurbine') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/windTurbine/leftTop.png'
+        penultimateSquare.appendChild(newImage)
+
+      } else if (lastDroppedPiece === 'connector') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/connector/leftTop.png'
+        penultimateSquare.appendChild(newImage)
+
+      }
       
     } else if (goesToBottom && comesFromLeft|| goesToLeft && comesFromBottom){
       var penultimateSquare = document.querySelector('[squareid="' + penultimate + '"]');
       console.log(penultimateSquare)
       penultimateSquare.removeChild(penultimateSquare.firstChild)
 
+      if (lastDroppedPiece === 'solarPanel') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/solarPanel/leftBottom.png'
+        penultimateSquare.appendChild(newImage)
+
+      } else if (lastDroppedPiece === 'wire') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/wire/leftBottom.png'
+        penultimateSquare.appendChild(newImage)
+
+      } else if (lastDroppedPiece === 'windTurbine') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/windTurbine/leftBottom.png'
+        penultimateSquare.appendChild(newImage)
+
+      } else if (lastDroppedPiece === 'connector') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/connector/leftBottom.png'
+        penultimateSquare.appendChild(newImage)
+      }
+
     } else if (goesToBottom && comesFromRight || goesToRight && comesFromBottom ) {
       var penultimateSquare = document.querySelector('[squareid="' + penultimate + '"]');
       console.log(penultimateSquare)
       penultimateSquare.removeChild(penultimateSquare.firstChild)
+
+      if (lastDroppedPiece === 'solarPanel') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/solarPanel/rightBottom.png'
+        penultimateSquare.appendChild(newImage)
+
+      } else if (lastDroppedPiece === 'wire') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/wire/rightBottom.png'
+        penultimateSquare.appendChild(newImage)
+
+      } else if (lastDroppedPiece === 'windTurbine') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/windTurbine/rightBottom.png'
+        penultimateSquare.appendChild(newImage)
+
+      } else if (lastDroppedPiece === 'connector') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/connector/rightBottom.png'
+        penultimateSquare.appendChild(newImage)
+      }
+
+
+
       
-    } else if (goesToRight && comesFromLeft || goesToLeft && comesFromRight) {
-      var penultimateSquare = document.querySelector('[squareid="' + penultimate + '"]');
-      console.log(penultimateSquare)
-      penultimateSquare.removeChild(penultimateSquare.firstChild)
-      
-    } else if (goesToBottom && comesFromBottom || goesToTop && comesFromTop) {
+    } else if (goesToRight && comesFromLeft || goesToLeft && comesFromRight || goesToRight && comesFromRight || goesToLeft && comesFromLeft) {
       var penultimateSquare = document.querySelector('[squareid="' + penultimate + '"]');
       console.log(penultimateSquare)
       penultimateSquare.removeChild(penultimateSquare.firstChild)
 
-  } else if (goesToRight && comesFromRight || goesToLeft && comesFromLeft) {
-    var penultimateSquare = document.querySelector('[squareid="' + penultimate + '"]');
-    console.log(penultimateSquare)
-    penultimateSquare.removeChild(penultimateSquare.firstChild)
+      
+      if (lastDroppedPiece === 'solarPanel') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/solarPanel/horizontal.png'
+        penultimateSquare.appendChild(newImage)
+
+      } else if (lastDroppedPiece === 'wire') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/wire/horizontal.png'
+        penultimateSquare.appendChild(newImage)
+
+      } else if (lastDroppedPiece === 'windTurbine') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/windTurbine/horizontal.png'
+        penultimateSquare.appendChild(newImage)
+
+      } else if (lastDroppedPiece === 'connector') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/connector/horizontal.png'
+        penultimateSquare.appendChild(newImage)
+      }
+
+      
+    } else if (goesToTop && comesFromRight || goesToRight && comesFromTop) {
+      var penultimateSquare = document.querySelector('[squareid="' + penultimate + '"]');
+      console.log(penultimateSquare)
+      penultimateSquare.removeChild(penultimateSquare.firstChild)
+
+      
+      if (lastDroppedPiece === 'solarPanel') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/solarPanel/rightTop.png'
+        penultimateSquare.appendChild(newImage)
+
+      } else if (lastDroppedPiece === 'wire') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/wire/rightTop.png'
+        penultimateSquare.appendChild(newImage)
+
+      } else if (lastDroppedPiece === 'windTurbine') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/windTurbine/rightTop.png'
+        penultimateSquare.appendChild(newImage)
+
+      } else if (lastDroppedPiece === 'connector') {
+        newImage = document.createElement('img')
+        newImage.src = 'img/connector/rightTop.png'
+        penultimateSquare.appendChild(newImage)
+      }
+
+      
+    } 
   
-  } else if (comesFromTop && goesToLeft) {
-    var penultimateSquare = document.querySelector('[squareid="' + penultimate + '"]');
-    console.log(penultimateSquare)
-    penultimateSquare.removeChild(penultimateSquare.firstChild)
-  
-  }  
 }
 
   function checksquare(i, arraySquareDragged) {

@@ -13,10 +13,23 @@ const startElements = [
     house1,"","","","","",house2
 ];
 export let arraySquareDragged = [24]
+let piecesDropped = []
 
 document.addEventListener('DOMContentLoaded', () => {
   initializeElements()
-  createBoard(startElements)
+  createBoard(startElements, piecesDropped)
   
-  
-});
+})
+
+export function deleteLastPiece(){
+
+  let lastPiece = arraySquareDragged[arraySquareDragged.length -1]
+
+  var penultimateSquare = document.querySelector('[squareid="' + lastPiece + '"]');
+      penultimateSquare.removeChild(penultimateSquare.firstChild)
+
+
+   arraySquareDragged.pop()
+   piecesDropped.pop()
+
+}

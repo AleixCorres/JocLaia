@@ -6,10 +6,10 @@ export const house1 = '<img src="img/house1.png">'
 export const house2 = '<img src="img/house2.png">'
 export const house3 = '<img src="img/house3.png">'
 export const house4 = '<img src="img/house4.png">'
-// const solarPanel = '<img src="img/solarPanel.png">'
-// const wire = '<img src="img/wire.png">'
-// const windTurbine = '<img src="img/windTurbine.png">'
-// const connector = '<img src="img/connector.png">'
+// const solarPanel = '<img src="img/solarPanel/solarPanel.png">'
+// const wire = '<img src="img/wire/wire.png">'
+// const windTurbine = '<img src="img/windTurbine/windTurbine.png">'
+// const connector = '<img src="img/connector/connector.png">'
 export let dragElement
 
 
