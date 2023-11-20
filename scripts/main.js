@@ -32,10 +32,10 @@ function deletelastpiece(){
   
 
   if (lastPiece !== 24) {
-    penultimateSquare.removeChild(penultimateSquare.firstChild)
     arraySquareDragged.pop()
     piecesDropped.pop()
-
+    if (lastPiece !== 0 && lastPiece !== 6 && lastPiece !== 42 && lastPiece !== 48) {
+      penultimateSquare.removeChild(penultimateSquare.firstChild)
+    }
   }
-
 }
