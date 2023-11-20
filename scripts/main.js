@@ -14,22 +14,28 @@ const startElements = [
 ];
 export let arraySquareDragged = [24]
 let piecesDropped = []
+var boton = document.getElementById('deleteLastElement');
 
 document.addEventListener('DOMContentLoaded', () => {
   initializeElements()
   createBoard(startElements, piecesDropped)
-  
+  boton.addEventListener('click', deletelastpiece);
+
+
 })
 
-export function deleteLastPiece(){
+function deletelastpiece(){
 
   let lastPiece = arraySquareDragged[arraySquareDragged.length -1]
 
-  var penultimateSquare = document.querySelector('[squareid="' + lastPiece + '"]');
-      penultimateSquare.removeChild(penultimateSquare.firstChild)
+  let penultimateSquare = document.querySelector('[squareid="' + lastPiece + '"]');
+  
 
+  if (lastPiece !== 24) {
+    penultimateSquare.removeChild(penultimateSquare.firstChild)
+    arraySquareDragged.pop()
+    piecesDropped.pop()
 
-   arraySquareDragged.pop()
-   piecesDropped.pop()
+  }
 
 }

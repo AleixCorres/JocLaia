@@ -20,7 +20,7 @@
                         <img src="img/solarPanel/solarPanel.png">
                     </div>
                     <div class="piece" id="wire" draggable="true">
-                        <img src="img/wire/wire.png">
+                        <img src="img/wire/horizontal.png">
                     </div>
                     <div class="piece" id="windTurbine" draggable="true">
                         <img src="img/windTurbine/windTurbine.png">
@@ -29,13 +29,10 @@
                         <img src="img/connector/connector.png">
                     </div>
                 </div>
-                <button onclick="deleteLastPiece()">Eliminar</button>
+                <button id="deleteLastElement">Eliminar</button>
             </div>
         </div>
     </div>
-    <script type="module" src="scripts/main.js"></script>
-    <script type="module">
-        import { deleteLastPiece } from './scripts/main.js';
-    </script>    
+    <script type="module" src="scripts/main.js"></script>   
 </body>
 </html>

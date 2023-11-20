@@ -26,11 +26,6 @@
     height: 90px;
 }
 
-#elementsBoard #wire img {
-    width: 53px!important;
-    height: 10px!important;
-
-}
 div.piece {
     width: fit-content;
 }

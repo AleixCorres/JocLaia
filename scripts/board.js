@@ -31,7 +31,7 @@ export function createBoard(startElements, piecesDropped) {
 
         } else if (dragElement === 'wire' && checksquare(i, arraySquareDragged)) {
           elementCopy = document.createElement('img')
-          elementCopy.src = 'img/wire/wire.png'
+          elementCopy.src = 'img/wire/horizontal.png'
 
 
         } else if (dragElement === 'windTurbine' && checksquare(i, arraySquareDragged)) {
@@ -309,13 +309,11 @@ export function createBoard(startElements, piecesDropped) {
     let checkedsquare = true
     let lastDropSquare = arraySquareDragged[arraySquareDragged.length -1]
 
-    //
     const leftEdge = [7,14,21,28,35]
     const rightEdge = [13,20,27,34,41]
     const topEdge = [1, 2, 3, 4, 5]
     const bottomEdge = [43,44,45,46,47]
 
-  
     let top = lastDropSquare-7
     let right = lastDropSquare+1
     let bottom = lastDropSquare+7
@@ -324,33 +322,25 @@ export function createBoard(startElements, piecesDropped) {
     if (leftEdge.includes(lastDropSquare)) { 
       let possibleOptions = [top, right, bottom]  
       console.log(possibleOptions) 
-      if (possibleOptions.includes(i)) {
-        
-      }else{
+      if (!possibleOptions.includes(i)) {
         checkedsquare = false
       }
       } else if (rightEdge.includes(lastDropSquare)) {
       let possibleOptions = [top, left, bottom]
-      if (possibleOptions.includes(i)) {
-        
-      }else{
+      if (!possibleOptions.includes(i)) {
         checkedsquare = false
       }
     } else if (topEdge.includes(lastDropSquare)) {
       let possibleOptions = [bottom, right, left]
-      if (possibleOptions.includes(i)) {
-        
-      }else{
+      if (!possibleOptions.includes(i)) {
         checkedsquare = false
       }
     } else if (bottomEdge.includes(lastDropSquare)) {
       let possibleOptions = [top, right, left]
-      if (possibleOptions.includes(i)) {
-        
-      }else{
+      if (!possibleOptions.includes(i)) {
         checkedsquare = false
       }
-    }else {
+    } else {
       let possibleOptions = [top, right,bottom, left]
       if (possibleOptions.includes(i)) {
         
