@@ -1,5 +1,6 @@
 import { dragElement } from './elements.js';
 import { arraySquareDragged } from './main.js';
+let score = 0 
 
 export function createBoard(startElements, piecesDropped) {
     
@@ -33,17 +34,12 @@ export function createBoard(startElements, piecesDropped) {
           elementCopy = document.createElement('img')
           elementCopy.src = 'img/wire/horizontal.png'
 
-
         } else if (dragElement === 'windTurbine' && checksquare(i, arraySquareDragged)) {
           elementCopy = document.createElement('img')
           elementCopy.src = 'img/windTurbine/windturbine.png'
-
-
         } else if (dragElement === 'connector'  && checksquare(i, arraySquareDragged)) {
           elementCopy = document.createElement('img')
           elementCopy.src = 'img/connector/connector.png'
-
-
         }
 
         if (!arraySquareDragged.includes(i)) {
@@ -53,6 +49,7 @@ export function createBoard(startElements, piecesDropped) {
         if (elementCopy) {
           arraySquareDragged.push(i)
           piecesDropped.push(dragElement)
+          updateScore()
           if (i !== 0 && i !== 6 && i !== 42 && i !== 48) {
             console.log(i)
             square.appendChild(elementCopy)
@@ -61,6 +58,15 @@ export function createBoard(startElements, piecesDropped) {
       })
     })
   }
+
+function updateScore() {
+  score = score + 1
+  console.log(score)
+  
+  var scoreHTML = document.getElementById("scoreHTML");
+  scoreHTML.innerHTML = score
+}
+
 
   function checkPenultimate(i, arraySquareDragged, piecesDropped) {
     

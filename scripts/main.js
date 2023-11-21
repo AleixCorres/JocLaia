@@ -12,6 +12,8 @@ const startElements = [
     "","","","","","","",
     house1,"","","","","",house2
 ];
+
+
 export let arraySquareDragged = [24]
 let piecesDropped = []
 var boton = document.getElementById('deleteLastElement');
@@ -19,7 +21,7 @@ var boton = document.getElementById('deleteLastElement');
 document.addEventListener('DOMContentLoaded', () => {
   initializeElements()
   createBoard(startElements, piecesDropped)
-  boton.addEventListener('click', deletelastpiece);
+  boton.addEventListener('click', deletelastpiece)
 
 
 })
@@ -39,3 +41,4 @@ function deletelastpiece(){
     }
   }
 }
+
