@@ -93,11 +93,12 @@ export function createBoard(startElements, piecesDropped) {
         elementCopy.src = 'img/connector/connector.png';
       }
 
+      //Checks de penultimate piece and change the img
       if (!arraySquareDragged.includes(i)) {
         checkPenultimate(i, arraySquareDragged, piecesDropped);
       }
       
-      if (elementCopy) {
+      if (elementCopy) {  
         arraySquareDragged.push(i);
         piecesDropped.push(dragElement);
         if (i !== 0 && i !== 6 && i !== 42 && i !== 48) {
@@ -105,15 +106,36 @@ export function createBoard(startElements, piecesDropped) {
           square.appendChild(elementCopy);
         }
       }
+    checkFinal()
+
+    
     });
   });
 }
 
+function checkFinal() {
+  if (arraySquareDragged.includes(0) && arraySquareDragged.includes(6) && arraySquareDragged.includes(42) && arraySquareDragged.includes(48)) {
+    console.log("Has ganado");
+    //poner que pasa cuando ganas
+  }
+}
+
+
 function updateScore() {
-  score = score + 1
+  let pieceToSum = piecesDropped[piecesDropped.length -1]
+  if (pieceToSum === 'solarPanel') {
+    score = score + 10 
+  } else if (pieceToSum === 'wire') {
+    score = score + 3
+  } else if (pieceToSum === 'windTurbine') {
+    score = score + 7   
+  } else if (pieceToSum === 'connector') {
+    score = score + 1  
+  }
+  
   console.log(score)
   
-  var scoreHTML = document.getElementById("scoreHTML");
+  var scoreHTML = document.getElementById("scoreHTML")
   scoreHTML.innerHTML = score
 }
 
@@ -370,13 +392,18 @@ function deletelastpiece(){
 }
 
 function deleteScore() {
+  let pieceToSubtract = piecesDropped[piecesDropped.length - 1];
+  console.log(pieceToSubtract)
+  if (pieceToSubtract === 'solarPanel') {
+    score = score - 10;
+  } else if (pieceToSubtract === 'wire') {
+    score = score - 3;
+  } else if (pieceToSubtract === 'windTurbine') {
+    score = score - 7;
+  } else if (pieceToSubtract === 'connector') {
+    score = score - 1;
+  }
 
-
-
-
-  score = score - 1
-  console.log(score)
-  
   var scoreHTML = document.getElementById("scoreHTML");
-  scoreHTML.innerHTML = score
+  scoreHTML.innerHTML = score;
 }
