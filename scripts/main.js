@@ -1,44 +1,53 @@
-
-// main.js
-
-
 // Define los elementos del juego
 const generator = '<img src="img/generator.png">'
 const house1 = '<img src="img/house1.png">'
 const house2 = '<img src="img/house2.png">'
 const house3 = '<img src="img/house3.png">'
 const house4 = '<img src="img/house4.png">'
-// const solarPanel = '<img src="img/solarPanel/solarPanel.png">'
-// const wire = '<img src="img/wire/wire.png">'
-// const windTurbine = '<img src="img/windTurbine/windTurbine.png">'
-// const connector = '<img src="img/connector/connector.png">'
+
+
+//define potencia de cada casa
+const house1Energy = 40
+const house2Energy = 60
+const house3Energy = 80
+const house4Energy = 100
 
 let dragElement
 
-// funcion para hacer el drag and drop con los elementos del div elementsBoard
-
-
 //Map 
 const startElements = [
-    house3,"","","","","",house4,
+    house2,"","","","","",house3,
     "","","","","","","",
     "","","","","","","",
     "","","",generator,"","","",
     "","","","","","","",
     "","","","","","","",
-    house1,"","","","","",house2
+    house1,"","","","","",house4
 ];
 
 let arraySquareDragged = [24]
-var score = 0
+let score = 0
+let seconds = 0
 let piecesDropped = []
 var boton = document.getElementById('deleteLastElement');
 
+
 document.addEventListener('DOMContentLoaded', () => {
+
   initializeElements()
   createBoard(startElements, piecesDropped)
   boton.addEventListener('click', deletelastpiece)
+  setInterval(updateTimer(seconds), 1000);
 });
+
+function updateTimer(seconds) {
+  seconds++;
+  const minutos = Math.floor(seconds / 60);
+  const segundosRestantes = seconds % 60;
+  const formatoMinutos = minutos < 10 ? `0${minutos}` : minutos;
+  const formatoSegundos = segundosRestantes < 10 ? `0${segundosRestantes}` : segundosRestantes;
+  document.getElementById('contador').innerHTML = `${formatoMinutos}:${formatoSegundos}`;
+}
 
 
 function initializeElements() {
@@ -79,16 +88,16 @@ export function createBoard(startElements, piecesDropped) {
       console.log('Drop on square ' + i);
       
       let elementCopy;
-      if (dragElement === 'solarPanel' && checksquare(i, arraySquareDragged)) {
+      if (dragElement === 'solarPanel' && checksquare(i, arraySquareDragged, score)) {
         elementCopy = document.createElement('img');
         elementCopy.src = 'img/solarPanel/solarpanel.png';
-      } else if (dragElement === 'wire' && checksquare(i, arraySquareDragged)) {
+      } else if (dragElement === 'wire' && checksquare(i, arraySquareDragged, score)) {
         elementCopy = document.createElement('img');
         elementCopy.src = 'img/wire/horizontal.png';
-      } else if (dragElement === 'windTurbine' && checksquare(i, arraySquareDragged)) {
+      } else if (dragElement === 'windTurbine' && checksquare(i, arraySquareDragged, score)) {
         elementCopy = document.createElement('img');
         elementCopy.src = 'img/windTurbine/windturbine.png';
-      } else if (dragElement === 'connector'  && checksquare(i, arraySquareDragged)) {
+      } else if (dragElement === 'connector'  && checksquare(i, arraySquareDragged, score)) {
         elementCopy = document.createElement('img');
         elementCopy.src = 'img/connector/connector.png';
       }
@@ -116,7 +125,7 @@ export function createBoard(startElements, piecesDropped) {
 function checkFinal() {
   if (arraySquareDragged.includes(0) && arraySquareDragged.includes(6) && arraySquareDragged.includes(42) && arraySquareDragged.includes(48)) {
     console.log("Has ganado");
-    //poner que pasa cuando ganas
+    //poner que pasa cuando gana
   }
 }
 
@@ -133,10 +142,10 @@ function updateScore() {
     score = score + 1  
   }
   
-  console.log(score)
   
   var scoreHTML = document.getElementById("scoreHTML")
   scoreHTML.innerHTML = score
+  updateProgressBar(score)
 }
 
 function checkPenultimate(i, arraySquareDragged, piecesDropped) {
@@ -328,7 +337,8 @@ function checkPenultimate(i, arraySquareDragged, piecesDropped) {
   }
 }
 
-function checksquare(i, arraySquareDragged) {
+function checksquare(i, arraySquareDragged,score) {
+  console.log("aaaaaaaaaaaaaaaaaa" + score);
   let checkedsquare = true;
   let lastDropSquare = arraySquareDragged[arraySquareDragged.length -1];
 
@@ -374,6 +384,26 @@ function checksquare(i, arraySquareDragged) {
     checkedsquare = false;
   }
 
+  //checks that house energy is valid
+
+  if (i === 42 && score != house1Energy) {
+    checkedsquare = false
+  }
+
+  if (i === 0 && score != house2Energy) {
+    checkedsquare = false
+  }
+
+  if (i === 48 && score != house3Energy) {
+    checkedsquare = false
+  }
+
+  if (i === 6 && score != house4Energy) {
+    checkedsquare = false
+  }
+
+  
+
   return checkedsquare;
 }
 
@@ -382,12 +412,12 @@ function deletelastpiece(){
   let penultimateSquare = document.querySelector('[squareid="' + lastPiece + '"]');
   
   if (lastPiece !== 24) {
-    arraySquareDragged.pop()
-    piecesDropped.pop()
     if (lastPiece !== 0 && lastPiece !== 6 && lastPiece !== 42 && lastPiece !== 48) {
       penultimateSquare.removeChild(penultimateSquare.firstChild)
       deleteScore(lastPiece)
     }
+    arraySquareDragged.pop()
+    piecesDropped.pop()
   }
 }
 
@@ -406,4 +436,16 @@ function deleteScore() {
 
   var scoreHTML = document.getElementById("scoreHTML");
   scoreHTML.innerHTML = score;
+  updateProgressBar(score)
 }
+
+function updateProgressBar(score) {
+  var progressBar = document.getElementById('currentProgress');
+        progressBar.style.width = score + '%';
+}
+
+
+function endScreen() {
+  
+}
+
