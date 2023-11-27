@@ -20,9 +20,18 @@
                 <p id="scoreHTML">0</p>
             </div>
             <div class="progressBar">
-                
-                <div class="milestone milestone-70"></div>
-                <div class="milestone milestone-80"></div>
+                <div class="milestone milestone-40">
+                    <span class="milestone-label">40</span>
+                </div>
+                <div class="milestone milestone-60">
+                    <span class="milestone-label">60</span>
+                </div>
+                <div class="milestone milestone-80">
+                    <span class="milestone-label">80</span>
+                </div>
+                <div class="milestone milestone-100">
+                    <span class="milestone-label">100</span>
+                </div>
                 <div class="progress" id="currentProgress"></div>
             </div>
         </div>
@@ -34,15 +43,19 @@
                 <div id="elementsBoard">
                     <div class="piece" id="solarPanel" draggable="true">
                         <img src="img/solarPanel/solarPanel.png">
+                        <p>10</p>
                     </div>
                     <div class="piece" id="wire" draggable="true">
                         <img src="img/wire/horizontal.png">
+                        <p>3</p>
                     </div>
                     <div class="piece" id="windTurbine" draggable="true">
                         <img src="img/windTurbine/windTurbine.png">
+                        <p>7</p>
                     </div>
                     <div class="piece" id="connector" draggable="true">
                         <img src="img/connector/connector.png">
+                        <p>1</p>
                     </div>
                     <button id="deleteLastElement">Eliminar</button>
                     <p id="contador">0:00</p>

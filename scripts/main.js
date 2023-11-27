@@ -1,4 +1,4 @@
-// Define los elementos del juego
+// Definates
 const generator = '<img src="img/generator.png">'
 const house1 = '<img src="img/house1.png">'
 const house2 = '<img src="img/house2.png">'
@@ -29,15 +29,14 @@ let arraySquareDragged = [24]
 let score = 0
 let seconds = 0
 let piecesDropped = []
-var boton = document.getElementById('deleteLastElement');
+let boton = document.getElementById('deleteLastElement');
 
 
 document.addEventListener('DOMContentLoaded', () => {
-
+  seconds = setInterval(updateTimer(seconds), 1000);
   initializeElements()
   createBoard(startElements, piecesDropped)
   boton.addEventListener('click', deletelastpiece)
-  setInterval(updateTimer(seconds), 1000);
 });
 
 function updateTimer(seconds) {
@@ -47,6 +46,7 @@ function updateTimer(seconds) {
   const formatoMinutos = minutos < 10 ? `0${minutos}` : minutos;
   const formatoSegundos = segundosRestantes < 10 ? `0${segundosRestantes}` : segundosRestantes;
   document.getElementById('contador').innerHTML = `${formatoMinutos}:${formatoSegundos}`;
+  return seconds;
 }
 
 
@@ -61,7 +61,6 @@ function initializeElements() {
     });
 
     piece.addEventListener('dragend', (e) => {
-      // Aquí puedes agregar el código necesario después de soltar el elemento
     });
   });
 }
@@ -102,7 +101,7 @@ export function createBoard(startElements, piecesDropped) {
         elementCopy.src = 'img/connector/connector.png';
       }
 
-      //Checks de penultimate piece and change the img
+      //Checks if penultimate piece and change the img
       if (!arraySquareDragged.includes(i)) {
         checkPenultimate(i, arraySquareDragged, piecesDropped);
       }
@@ -125,7 +124,8 @@ export function createBoard(startElements, piecesDropped) {
 function checkFinal() {
   if (arraySquareDragged.includes(0) && arraySquareDragged.includes(6) && arraySquareDragged.includes(42) && arraySquareDragged.includes(48)) {
     console.log("Has ganado");
-    //poner que pasa cuando gana
+    //Victoria
+    endScreen()
   }
 }
 
@@ -338,7 +338,6 @@ function checkPenultimate(i, arraySquareDragged, piecesDropped) {
 }
 
 function checksquare(i, arraySquareDragged,score) {
-  console.log("aaaaaaaaaaaaaaaaaa" + score);
   let checkedsquare = true;
   let lastDropSquare = arraySquareDragged[arraySquareDragged.length -1];
 
@@ -440,8 +439,11 @@ function deleteScore() {
 }
 
 function updateProgressBar(score) {
-  var progressBar = document.getElementById('currentProgress');
+
+  if (score <= 100) {
+    var progressBar = document.getElementById('currentProgress');
         progressBar.style.width = score + '%';
+  }
 }
 
 
