@@ -28,6 +28,7 @@
 
 div.piece {
     width: fit-content;
+    display: flex;
 }
 .square[squareid="42"] img{
         width: 90px;
@@ -107,6 +108,7 @@ body{
 }
 .col1{
     width: 20%;
+    display: flex;
 }
 
 .milestone {
@@ -186,4 +188,39 @@ body{
     font-weight: bold;
 }
 
+.col2{
+    width: 70%;
+}
 
+
+.row{
+    width: 100%;
+}
+
+.col3{
+    width: 60%!important;
+}
+
+.col4{
+    width: 40%!important;
+}
+
+p#scoreHTML {
+    padding-left: 50px;
+}
+
+#elementsBoard div{
+    align-items: center;
+}
+
+#deleteLastElement{
+    background-image: url('img/paper-bin.png'); 
+    background-size: 80px 80px;
+    width: 100px;
+    height: 100px;
+    background-repeat: no-repeat;
+}
+
+p{
+    margin-top: 0px;
+}

@@ -17,30 +17,33 @@
     <div class="container text-center">
         <div class="headrow">
             <div class="col1">
+                <p>Score:</p>
                 <p id="scoreHTML">0</p>
             </div>
-            <div class="progressBar">
-                <div class="milestone milestone-40">
-                    <span class="milestone-label">40</span>
+            <div class="col2">
+                <div class="progressBar">
+                    <div class="milestone milestone-40">
+                        <span class="milestone-label">40</span>
+                    </div>
+                    <div class="milestone milestone-60">
+                        <span class="milestone-label">60</span>
+                    </div>
+                    <div class="milestone milestone-80">
+                        <span class="milestone-label">80</span>
+                    </div>
+                    <div class="milestone milestone-100">
+                        <span class="milestone-label">100</span>
+                    </div>
+                    <div class="progress" id="currentProgress"></div>
                 </div>
-                <div class="milestone milestone-60">
-                    <span class="milestone-label">60</span>
-                </div>
-                <div class="milestone milestone-80">
-                    <span class="milestone-label">80</span>
-                </div>
-                <div class="milestone milestone-100">
-                    <span class="milestone-label">100</span>
-                </div>
-                <div class="progress" id="currentProgress"></div>
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col3">
                 <div id="gameBoard"></div>
             </div>
-            <div class="col">
-                <div id="elementsBoard">
+            <div class="col4">
+                <!-- <div id="elementsBoard">
                     <div class="piece" id="solarPanel" draggable="true">
                         <img src="img/solarPanel/solarPanel.png">
                         <p>10</p>
@@ -56,12 +59,46 @@
                     <div class="piece" id="connector" draggable="true">
                         <img src="img/connector/connector.png">
                         <p>1</p>
-                    </div>
-                    <button id="deleteLastElement">Eliminar</button>
-                    <p id="contador">0:00</p>
-                </div>
+                    </div> -->
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Valor energético</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="piece" id="solarPanel" draggable="true">
+                                    <img src="img/solarPanel/solarPanel.png"></td>
+                            <td>10</td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <div class="piece" id="wire" draggable="true">
+                            <img src="img/wire/horizontal.png"></td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <div class="piece" id="windTurbine" draggable="true">
+                            <img src="img/windTurbine/windTurbine.png"></td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="piece" id="connector" draggable="true">
+                                <img src="img/connector/connector.png"></td>
+                            <td>1</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button id="deleteLastElement"></button>
+                <p id="contador">0:00</p>
             </div>
         </div>
+    </div>
     </div>
     <script type="module" src="scripts/main.js"></script>
 </body>
