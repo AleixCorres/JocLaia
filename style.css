@@ -1,7 +1,7 @@
 #gameBoard {
     width: 630px;
     height: 630px;
-    background-color:  #097B29;;
+    background-color:  #449d5d;;
     display: flex;
     flex-wrap: wrap;
 }
@@ -29,6 +29,7 @@
 div.piece {
     width: fit-content;
     display: flex;
+    cursor: grab;
 }
 .square[squareid="42"] img{
         width: 90px;
@@ -59,11 +60,13 @@ div.piece {
     padding: 50px;
     flex-direction: column;
     position: relative;
-    background-color: aliceblue;
     padding-top: 50px; /* ajusta según tu diseño para agregar espacio superior */
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    backdrop-filter: blur(20px);
 }
 body{
-    background-image: url('./img/backgrouund_india.jpg');
+    background-image: url('./img/india.png');
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -74,6 +77,7 @@ body{
     padding: 5px;
     border-radius: 15px;
     margin-bottom: 20px;
+    transition: 0.2s;
   }
 
   button{
@@ -216,11 +220,19 @@ p#scoreHTML {
 #deleteLastElement{
     background-image: url('img/paper-bin.png'); 
     background-size: 80px 80px;
+    background-position: center;
     width: 100px;
     height: 100px;
     background-repeat: no-repeat;
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: 15px;
 }
 
 p{
     margin-top: 0px;
+}
+
+tr td:nth-child(2) {
+    margin-left: 50px;
 }

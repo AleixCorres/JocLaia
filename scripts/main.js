@@ -31,14 +31,19 @@ let seconds = 0
 let piecesDropped = []
 let boton = document.getElementById('deleteLastElement');
 
+setInterval(() => {
+  timer()
+}, 1000);
 
 document.addEventListener('DOMContentLoaded', () => {
-  seconds = setInterval(updateTimer(seconds), 1000);
   initializeElements()
   createBoard(startElements, piecesDropped)
   boton.addEventListener('click', deletelastpiece)
 });
 
+function timer() {
+  seconds = setTimeout(updateTimer(seconds), 1000);
+}
 function updateTimer(seconds) {
   seconds++;
   const minutos = Math.floor(seconds / 60);
