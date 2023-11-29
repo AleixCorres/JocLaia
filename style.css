@@ -60,10 +60,11 @@ div.piece {
     padding: 50px;
     flex-direction: column;
     position: relative;
-    padding-top: 50px; /* ajusta según tu diseño para agregar espacio superior */
-    border: 2px solid rgba(255, 255, 255, 0.5);
+    padding-top: 50px; 
+    border: 2px solid rgba(0, 0, 0, 0.5);
     box-shadow: 0 0 30px rgba(0, 0, 0, .5);
     backdrop-filter: blur(20px);
+    background-color: rgb(112 112 112 / 12%);
 }
 body{
     background-image: url('./img/india.png');
@@ -78,6 +79,7 @@ body{
     border-radius: 15px;
     margin-bottom: 20px;
     transition: 0.2s;
+    background-color: #449d5d;
   }
 
   button{
@@ -109,6 +111,7 @@ body{
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+    padding-bottom: 70px;
 }
 .col1{
     width: 20%;
@@ -210,7 +213,7 @@ body{
 }
 
 p#scoreHTML {
-    padding-left: 50px;
+    padding-left: 10px;
 }
 
 #elementsBoard div{
@@ -224,15 +227,26 @@ p#scoreHTML {
     width: 100px;
     height: 100px;
     background-repeat: no-repeat;
-    background-color: transparent;
+    /* background-color: transparent; */
+    background-color: #da3f3f;
     border: 2px solid #000;
     border-radius: 15px;
 }
 
 p{
     margin-top: 0px;
+    font-size: 45px;
 }
 
 tr td:nth-child(2) {
-    margin-left: 50px;
+    padding-left: 100px;
 }
+th{
+    padding-left: 100px;
+}
+button#deleteLastElement{
+    transform: scale(0.98);
+            /* Scaling button to 0.98 to its original size */
+            box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+            /* Lowering the shadow */
+        }

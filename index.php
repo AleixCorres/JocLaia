@@ -17,7 +17,7 @@
     <div class="container text-center">
         <div class="headrow">
             <div class="col1">
-                <p>Score:</p>
+                <p>Energia</p>
                 <p id="scoreHTML">0</p>
             </div>
             <div class="col2">
@@ -43,23 +43,6 @@
                 <div id="gameBoard"></div>
             </div>
             <div class="col4">
-                <!-- <div id="elementsBoard">
-                    <div class="piece" id="solarPanel" draggable="true">
-                        <img src="img/solarPanel/solarPanel.png">
-                        <p>10</p>
-                    </div>
-                    <div class="piece" id="wire" draggable="true">
-                        <img src="img/wire/horizontal.png">
-                        <p>3</p>
-                    </div>
-                    <div class="piece" id="windTurbine" draggable="true">
-                        <img src="img/windTurbine/windTurbine.png">
-                        <p>7</p>
-                    </div>
-                    <div class="piece" id="connector" draggable="true">
-                        <img src="img/connector/connector.png">
-                        <p>1</p>
-                    </div> -->
                 <table>
                     <thead>
                         <tr>
@@ -70,32 +53,38 @@
                     <tbody>
                         <tr>
                             <td>
-                                <div class="piece" id="solarPanel" draggable="true">
-                                    <img src="img/solarPanel/solarPanel.png"></td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>
                             <div class="piece" id="wire" draggable="true">
                             <img src="img/wire/horizontal.png"></td>
-                            <td>3</td>
-                        </tr>
-                        <tr>
-                            <td>
-                            <div class="piece" id="windTurbine" draggable="true">
-                            <img src="img/windTurbine/windTurbine.png"></td>
-                            <td>7</td>
+                            <td><p>1</p></td>
                         </tr>
                         <tr>
                             <td>
                                 <div class="piece" id="connector" draggable="true">
                                 <img src="img/connector/connector.png"></td>
-                            <td>1</td>
+                            <td><p>2</p></td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <div class="piece" id="windTurbine" draggable="true">
+                            <img src="img/windTurbine/windTurbine.png"></td>
+                            <td><p>5</p></td>
+                        </tr>
+                        
+                        <tr>
+                            <td>
+                                <div class="piece" id="solarPanel" draggable="true">
+                                    <img src="img/solarPanel/solarPanel.png"></td>
+                            <td><p>10</p></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <button id="deleteLastElement"></button>
+                                </td>
+                            <td><p id="contador">0:00</p></td>
                         </tr>
                     </tbody>
                 </table>
-                <button id="deleteLastElement"></button>
-                <p id="contador">0:00</p>
+                
             </div>
         </div>
     </div>

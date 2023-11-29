@@ -12,6 +12,12 @@ const house2Energy = 60
 const house3Energy = 80
 const house4Energy = 100
 
+//definir potencia de cada pieza
+const solarPanelValue = 10
+const windTurbineValue = 5
+const connectorValue = 2
+const wireValue = 1
+
 let dragElement
 
 //Map 
@@ -138,13 +144,13 @@ function checkFinal() {
 function updateScore() {
   let pieceToSum = piecesDropped[piecesDropped.length -1]
   if (pieceToSum === 'solarPanel') {
-    score = score + 10 
+    score = score + solarPanelValue 
   } else if (pieceToSum === 'wire') {
-    score = score + 3
+    score = score + wireValue
   } else if (pieceToSum === 'windTurbine') {
-    score = score + 7   
+    score = score + windTurbineValue   
   } else if (pieceToSum === 'connector') {
-    score = score + 1  
+    score = score + connectorValue  
   }
   
   
@@ -429,13 +435,13 @@ function deleteScore() {
   let pieceToSubtract = piecesDropped[piecesDropped.length - 1];
   console.log(pieceToSubtract)
   if (pieceToSubtract === 'solarPanel') {
-    score = score - 10;
+    score = score - solarPanelValue;
   } else if (pieceToSubtract === 'wire') {
-    score = score - 3;
+    score = score - wireValue;
   } else if (pieceToSubtract === 'windTurbine') {
-    score = score - 7;
+    score = score - windTurbineValue;
   } else if (pieceToSubtract === 'connector') {
-    score = score - 1;
+    score = score - connectorValue;
   }
 
   var scoreHTML = document.getElementById("scoreHTML");
